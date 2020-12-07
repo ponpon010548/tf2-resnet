@@ -1,4 +1,4 @@
-# tf2_resnet
+# tf2-resnet
 
 An implementation of _**Deep Residual Learning for Image Recognition** https://arxiv.org/abs/1512.03385_
 
