@@ -16,7 +16,7 @@ class Resnet(tf.keras.Model):
         The resnet model
     '''
 
-    def __init__(self, CLASSES, conv2_x, conv3_x, conv4_x, conv5_x, initializer = tf.keras.initializers.HeUniform()):
+    def __init__(self, CLASSES, conv2_x, conv3_x, conv4_x, conv5_x, initializer):
         super(Resnet, self).__init__()
         self.head_conv = layers.Conv2D(filters = 64, kernel_size = (7, 7), strides = (2, 2), padding = "same",\
                                   kernel_initializer = initializer, name = "stage1_conv")
@@ -50,7 +50,7 @@ class IdentityBlock(tf.keras.Model):
         The identity block.
 
     '''
-    def __init__(self, filters, name, initializer = tf.keras.initializers.HeUniform()):
+    def __init__(self, filters, name, initializer):
         super(IdentityBlock, self).__init__()
         self.conv_1 = layers.Conv2D(filters = filters, kernel_size = (1, 1), strides = (1, 1),\
                                     padding = "same", kernel_initializer = initializer, name = name + "_conv_1")
@@ -86,7 +86,7 @@ class ConvBlock(tf.keras.Model):
         The conv block.
 
     '''
-    def __init__(self, filters, stride, name, initializer = tf.keras.initializers.HeUniform()):
+    def __init__(self, filters, stride, name, initializer):
         super(ConvBlock, self).__init__()
         self.conv_1 = layers.Conv2D(filters = filters, kernel_size = (1, 1), strides = (stride, stride),\
                                     padding = "same", kernel_initializer = initializer, name = name + "_conv_1")
@@ -126,7 +126,7 @@ class SmallIdentityBlock(tf.keras.Model):
         The identity block.
 
     '''
-    def __init__(self, filters, name, initializer = tf.keras.initializers.HeUniform()):
+    def __init__(self, filters, name, initializer):
         super(SmallIdentityBlock, self).__init__()
         self.conv_1 = layers.Conv2D(filters = filters, kernel_size = (3, 3), strides = (1, 1),\
                                     padding = "same", kernel_initializer = initializer, name = name + "_conv_1")
@@ -156,7 +156,7 @@ class SmallConvBlock(tf.keras.Model):
         The conv block.
 
     '''
-    def __init__(self, filters, stride, name, initializer = tf.keras.initializers.HeUniform()):
+    def __init__(self, filters, stride, name, initializer):
         super(SmallConvBlock, self).__init__()
         self.conv_1 = layers.Conv2D(filters = filters, kernel_size = (3, 3), strides = (stride, stride),\
                                     padding = "same", kernel_initializer = initializer, name = name + "_conv_1")
