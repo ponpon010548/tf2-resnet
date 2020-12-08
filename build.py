@@ -2,7 +2,7 @@ import tensorflow as tf
 import tensorflow.keras.layers as layers
 from resnet import *
 
-def build_net(cfg, CLASSES, initializer = tf.keras.initializers.HeUniform()):
+def build_net(cfg, CLASSES, initializer = tf.keras.initializers.he_uniform()):
     '''Build resnet.\n
     Args:
         cfg: string, type of net (options: 'resnet18', 'resnet34', 'resnet50', 'resnet101', 'resnet152').
@@ -12,8 +12,6 @@ def build_net(cfg, CLASSES, initializer = tf.keras.initializers.HeUniform()):
     Return:
         resnet model you selected.
     '''
-    if int(tf.__version__[2]) < 3 and initializer == tf.keras.initializers.HeUniform():
-        initializer = tf.keras.initializers.he_uniform()
     conv2_x, conv3_x, conv4_x, conv5_x = net_cfg(cfg, initializer)
     net = Resnet(CLASSES, conv2_x, conv3_x, conv4_x, conv5_x, initializer)
     net._name = cfg
